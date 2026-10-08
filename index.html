@@ -13,6 +13,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
   <!-- FontAwesome Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- EmailJS CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 
   <script>
     tailwind.config = {
@@ -53,9 +55,6 @@
 </head>
 <body class="bg-slate-50 text-slate-800 antialiased selection:bg-brand-500 selection:text-white pb-20 md:pb-0">
 
-  <!-- Invisible Recaptcha Container for Firebase SMS -->
-  <div id="recaptcha-container"></div>
-
   <!-- Header / Navbar -->
   <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-slate-200/80 shadow-sm">
     <div class="max-w-7xl mx-auto px-3 sm:px-6 h-16 sm:h-20 flex items-center justify-between">
@@ -94,10 +93,10 @@
         গোপালগঞ্জ সদর, BSMRSTU ক্যাম্পাস ও সংলগ্ন অঞ্চল
       </div>
       <h1 class="text-2xl sm:text-5xl font-black tracking-tight leading-snug sm:leading-tight">
-        পছন্দের বাসা খুঁজুন <br class="sm:hidden"><span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-200">Firebase ডাটাবেস ও লাইভ এসএমএস সুবিধায়</span>
+        পছন্দের বাসা খুঁজুন <br class="sm:hidden"><span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-200">EmailJS ওটিপি সিকিউরিটিতে</span>
       </h1>
       <p class="text-slate-300 text-xs sm:text-base max-w-2xl mx-auto px-2">
-        বাসার সব রুম স্লাইড করে ঘুরে দেখুন, রেটিং দিন এবং সরাসরি 'Play Video' বাটনে চাপ দিয়ে ভিডিও ক্লিপ উপভোগ করুন।
+        বাসার সব রুম ঘুরে দেখুন, সরাসরি কল দিন এবং বাড়িওয়ালার সাথে সহজে যোগাযোগ করুন।
       </p>
     </div>
   </section>
@@ -162,7 +161,7 @@
           </div>
           <span class="text-lg font-black text-white">টু-লেট <span class="text-brand-500">গোপালগঞ্জ</span></span>
         </div>
-        <p class="text-xs text-slate-400 leading-relaxed">গোপালগঞ্জ শহরের ফ্ল্যাট, মেস ও সাবলেট খোঁজার এবং সরাসরি বাড়িওয়ালার সাথে যোগাযোগের অন্যতম বিশ্বস্ত প্ল্যাটফর্ম।</p>
+        <p class="text-xs text-slate-400 leading-relaxed">গোপালগঞ্জ শহরের ফ্ল্যাট, মেস ও সাবলেট খোঁজার এবং সরাসরি বাড়িওয়ালার সাথে যোগাযোগের বিশ্বস্ত প্ল্যাটফর্ম।</p>
       </div>
       <div>
         <h4 class="text-sm font-bold text-white uppercase tracking-wider mb-3">জনপ্রিয় এলাকা</h4>
@@ -186,7 +185,7 @@
     </div>
     <div class="border-t border-slate-800/80 pt-6">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-slate-500">
-        <p>© 2026 টু-লেট গোপালগঞ্জ। Firebase Database Integrated.</p>
+        <p>© 2026 টু-লেট গোপালগঞ্জ। সর্বস্বত্ব সংরক্ষিত।</p>
         <button onclick="toggleAdminLoginModal(true)" class="text-slate-400 hover:text-rose-400 font-medium transition flex items-center gap-1">
           <i class="fa-solid fa-shield-halved text-rose-500"></i> অ্যাডমিন লগইন
         </button>
@@ -225,15 +224,12 @@
       <div class="p-6">
         <form onsubmit="handleDedicatedAdminLogin(event)" class="space-y-3.5 text-xs sm:text-sm">
           <div>
-            <label class="block font-semibold text-slate-400 mb-1 uppercase tracking-wider text-[10px]">অ্যাডমিন জিমেইল / ইমেইল</label>
+            <label class="block font-semibold text-slate-400 mb-1 uppercase tracking-wider text-[10px]">অ্যাডমিন ইমেইল</label>
             <input type="email" id="adminLoginEmail" required value="admin@toletgopalganj.com" class="w-full px-3.5 py-2.5 bg-slate-800 border border-slate-700 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-rose-500">
           </div>
           <div>
             <label class="block font-semibold text-slate-400 mb-1 uppercase tracking-wider text-[10px]">পাসওয়ার্ড</label>
-            <input type="password" id="adminLoginPassword" required placeholder="admin123" class="w-full px-3.5 py-2.5 bg-slate-800 border border-slate-700 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-rose-500">
-          </div>
-          <div class="text-right">
-            <button type="button" onclick="openAdminForgotPassword()" class="text-[11px] text-rose-400 hover:underline">পাসওয়ার্ড ভুলে গেছেন? (Gmail Reset)</button>
+            <input type="password" id="adminLoginPassword" required placeholder="••••••••" class="w-full px-3.5 py-2.5 bg-slate-800 border border-slate-700 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-rose-500">
           </div>
           <button type="submit" class="w-full py-2.5 bg-rose-600 hover:bg-rose-700 text-white font-bold rounded-xl transition shadow-lg shadow-rose-900/40 mt-2">
             অ্যাডমিন প্যানেলে প্রবেশ করুন
@@ -243,56 +239,42 @@
     </div>
   </div>
 
-  <!-- Modal: Password Reset -->
+  <!-- Modal: EmailJS OTP Password Reset -->
   <div id="forgotPassModal" class="fixed inset-0 bg-slate-900/70 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
     <div class="bg-white rounded-3xl w-full max-w-sm overflow-hidden shadow-2xl border border-slate-100">
       <div class="px-6 py-4 bg-gradient-to-r from-brand-600 to-teal-700 text-white flex justify-between items-center">
-        <h3 id="forgotModalTitle" class="text-base font-bold">পাসওয়ার্ড রিসেট (Firebase)</h3>
+        <h3 class="text-base font-bold"><i class="fa-solid fa-key mr-1.5"></i>পাসওয়ার্ড রিসেট (Email OTP)</h3>
         <button onclick="toggleForgotPassModal(false)" class="text-white text-2xl font-bold leading-none">&times;</button>
       </div>
 
       <div class="p-6 text-xs sm:text-sm">
-        <div id="forgotStepChoice" class="space-y-3">
-          <p class="text-slate-600 text-[11px] leading-relaxed">আপনি কীভাবে পাসওয়ার্ড রিসেট করতে চান নির্বাচন করুন:</p>
-          <div class="grid grid-cols-2 gap-2">
-            <button type="button" onclick="setForgotMethod('email')" id="btnMethodEmail" class="py-2.5 px-3 border-2 border-brand-600 bg-brand-50 text-brand-700 font-bold rounded-xl text-xs flex flex-col items-center gap-1">
-              <i class="fa-solid fa-envelope text-base"></i>
-              <span>Gmail / Email</span>
-            </button>
-            <button type="button" onclick="setForgotMethod('sms')" id="btnMethodSms" class="py-2.5 px-3 border border-slate-200 bg-slate-50 text-slate-600 font-bold rounded-xl text-xs flex flex-col items-center gap-1">
-              <i class="fa-solid fa-comment-sms text-base"></i>
-              <span>Phone SMS OTP</span>
-            </button>
+        <!-- Step 1: Send OTP -->
+        <div id="otpStepEmail" class="space-y-3">
+          <p class="text-slate-600 text-[11px] leading-relaxed">আপনার অ্যাকাউন্টের জিমেইল/ইমেইল দিন। আমরা সেখানে ৬ সংখ্যার ওটিপি পাঠাব।</p>
+          <div>
+            <label class="block font-semibold text-slate-700 mb-1 uppercase text-[10px]">আপনার ইমেইল ঠিকানা</label>
+            <input type="email" id="resetTargetEmail" placeholder="example@gmail.com" class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-500">
           </div>
-
-          <div id="forgotEmailField" class="mt-3">
-            <label class="block font-semibold text-slate-700 mb-1 uppercase text-[10px]">আপনার Gmail / ইমেইল ঠিকানা</label>
-            <input type="email" id="forgotEmailInput" placeholder="example@gmail.com" class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-500">
-            <button type="button" onclick="sendFirebaseEmailReset()" class="w-full py-2.5 bg-brand-600 hover:bg-brand-700 text-white font-bold rounded-xl transition shadow mt-3">
-              ইমেইলে রিসেট লিংক পাঠান
-            </button>
-          </div>
-
-          <div id="forgotSmsField" class="mt-3 hidden">
-            <label class="block font-semibold text-slate-700 mb-1 uppercase text-[10px]">মোবাইল নম্বর (+880 সহ)</label>
-            <input type="tel" id="forgotPhoneInput" placeholder="+88017XXXXXXXX" class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-500">
-            <button type="button" onclick="sendFirebasePhoneOtp()" class="w-full py-2.5 bg-brand-600 hover:bg-brand-700 text-white font-bold rounded-xl transition shadow mt-3">
-              ফোনে SMS OTP পাঠান
-            </button>
-          </div>
+          <button type="button" id="btnSendOtp" onclick="handleSendEmailOtp()" class="w-full py-2.5 bg-brand-600 hover:bg-brand-700 text-white font-bold rounded-xl transition shadow mt-3 flex items-center justify-center gap-2">
+            <span>OTP কোড পাঠান</span>
+          </button>
         </div>
 
-        <!-- Phone SMS Verification Step -->
-        <div id="forgotStepOtp" class="space-y-3 hidden">
+        <!-- Step 2: Verify OTP and Set New Password -->
+        <div id="otpStepVerify" class="space-y-3 hidden">
           <div class="bg-emerald-50 border border-emerald-200 p-2.5 rounded-xl text-emerald-800 text-[11px]">
-            আপনার ফোনে Firebase থেকে SMS কোড পাঠানো হয়েছে।
+            আপনার ইমেইলে ৬ ডিজিটের ওটিপি পাঠানো হয়েছে। নিচে প্রবেশ করান:
           </div>
           <div>
-            <label class="block font-semibold text-slate-700 mb-1 uppercase text-[10px]">SMS OTP কোড দিন</label>
-            <input type="text" id="firebaseOtpInput" maxlength="6" placeholder="123456" class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl tracking-widest text-center font-bold text-base focus:ring-2 focus:ring-brand-500 outline-none">
+            <label class="block font-semibold text-slate-700 mb-1 uppercase text-[10px]">OTP কোড দিন</label>
+            <input type="text" id="inputEnteredOtp" maxlength="6" placeholder="123456" class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl tracking-widest text-center font-bold text-base focus:ring-2 focus:ring-brand-500 outline-none">
           </div>
-          <button type="button" onclick="verifyFirebaseSmsOtp()" class="w-full py-2.5 bg-brand-600 hover:bg-brand-700 text-white font-bold rounded-xl transition shadow mt-1">
-            কোড নিশ্চিত করুন
+          <div>
+            <label class="block font-semibold text-slate-700 mb-1 uppercase text-[10px]">নতুন পাসওয়ার্ড</label>
+            <input type="password" id="inputNewPassword" placeholder="কমপক্ষে ৬ ডিজিট" class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-brand-500 outline-none">
+          </div>
+          <button type="button" onclick="handleVerifyOtpAndReset()" class="w-full py-2.5 bg-brand-600 hover:bg-brand-700 text-white font-bold rounded-xl transition shadow mt-1">
+            পাসওয়ার্ড পরিবর্তন করুন
           </button>
         </div>
       </div>
@@ -309,10 +291,10 @@
           </div>
           <div>
             <div class="flex items-center gap-2">
-              <h3 class="text-sm sm:text-base font-bold leading-tight">অ্যাডমিন কন্ট্রোল প্যানেল</h3>
-              <span class="bg-rose-500/20 text-rose-300 border border-rose-500/30 text-[10px] px-2 py-0.5 rounded-full font-bold">Cloud Firestore</span>
+              <h3 class="text-sm sm:text-base font-bold leading-tight">অ্যাডমিন ফুল কন্ট্রোল প্যানেল</h3>
+              <span class="bg-rose-500/20 text-rose-300 border border-rose-500/30 text-[10px] px-2 py-0.5 rounded-full font-bold">Master Admin</span>
             </div>
-            <p class="text-[11px] text-slate-400">Firebase লাইভ ডাটাবেস পর্যবেক্ষণ ও পরিচালনা</p>
+            <p class="text-[11px] text-slate-400">সকল বিজ্ঞাপন, এলাকা ও ইউজারদের তথ্য ব্যবস্থাপনা</p>
           </div>
         </div>
         <button onclick="toggleAdminModal(false)" class="text-slate-400 hover:text-white text-2xl font-bold leading-none p-1">&times;</button>
@@ -321,19 +303,19 @@
       <div class="grid grid-cols-4 gap-2.5 p-3.5 sm:p-4 bg-slate-50 border-b border-slate-200 shrink-0 text-center">
         <div class="bg-white p-2 sm:p-2.5 rounded-xl border border-slate-200">
           <span class="text-[10px] sm:text-[11px] text-slate-400 font-bold uppercase block">মোট বিজ্ঞাপন</span>
-          <span id="adminStatAds" class="text-sm sm:xl font-black text-slate-800">0</span>
+          <span id="adminStatAds" class="text-sm sm:text-xl font-black text-slate-800">0</span>
         </div>
         <div class="bg-white p-2 sm:p-2.5 rounded-xl border border-slate-200">
           <span class="text-[10px] sm:text-[11px] text-slate-400 font-bold uppercase block">মোট এলাকা</span>
-          <span id="adminStatAreas" class="text-sm sm:xl font-black text-emerald-600">0</span>
+          <span id="adminStatAreas" class="text-sm sm:text-xl font-black text-emerald-600">0</span>
         </div>
         <div class="bg-white p-2 sm:p-2.5 rounded-xl border border-slate-200">
           <span class="text-[10px] sm:text-[11px] text-slate-400 font-bold uppercase block">মোট ইউজার</span>
-          <span id="adminStatUsers" class="text-sm sm:xl font-black text-brand-600">0</span>
+          <span id="adminStatUsers" class="text-sm sm:text-xl font-black text-brand-600">0</span>
         </div>
         <div class="bg-white p-2 sm:p-2.5 rounded-xl border border-slate-200">
           <span class="text-[10px] sm:text-[11px] text-slate-400 font-bold uppercase block">ভিডিও পোস্ট</span>
-          <span id="adminStatVideos" class="text-sm sm:xl font-black text-rose-600">0</span>
+          <span id="adminStatVideos" class="text-sm sm:text-xl font-black text-rose-600">0</span>
         </div>
       </div>
 
@@ -342,37 +324,48 @@
           <i class="fa-solid fa-rectangle-list"></i> সব বিজ্ঞাপন (<span id="adminTotalAdsCount">0</span>)
         </button>
         <button onclick="switchAdminTab('areas')" id="adminTabBtnAreas" class="py-3 px-3 sm:px-4 font-bold border-b-2 border-transparent text-slate-500 hover:text-slate-800 whitespace-nowrap transition flex items-center gap-1.5">
-          <i class="fa-solid fa-location-dot"></i> এলাকা ব্যবস্থাপনা (<span id="adminTotalAreasCount">0</span>)
+          <i class="fa-solid fa-location-dot"></i> স্থান ও এলাকা (<span id="adminTotalAreasCount">0</span>)
         </button>
         <button onclick="switchAdminTab('users')" id="adminTabBtnUsers" class="py-3 px-3 sm:px-4 font-bold border-b-2 border-transparent text-slate-500 hover:text-slate-800 whitespace-nowrap transition flex items-center gap-1.5">
-          <i class="fa-solid fa-users"></i> ইউজার তালিকা (<span id="adminTotalUsersCount">0</span>)
+          <i class="fa-solid fa-users"></i> ইউজার ও পাসওয়ার্ড তালিকা (<span id="adminTotalUsersCount">0</span>)
         </button>
       </div>
 
       <div class="p-4 sm:p-6 overflow-y-auto flex-1 space-y-4">
+        <!-- Admin Ads Management -->
         <div id="adminTabContentAds" class="space-y-3">
-          <div class="flex items-center justify-between mb-1">
-            <span class="text-xs font-bold text-slate-500 uppercase">বিজ্ঞাপন তালিকা ও নিয়ন্ত্রণ</span>
-            <input type="text" oninput="filterAdminAds(this.value)" placeholder="বিজ্ঞাপন খুঁজুন..." class="px-3 py-1.5 text-xs bg-slate-50 border border-slate-200 rounded-lg outline-none focus:bg-white focus:ring-1 focus:ring-slate-800">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-2">
+            <span class="text-xs font-bold text-slate-500 uppercase">বিজ্ঞাপন তালিকা ও অ্যাকশন</span>
+            <div class="flex items-center gap-2">
+              <input type="text" oninput="filterAdminAds(this.value)" placeholder="বিজ্ঞাপন খুঁজুন..." class="px-3 py-1.5 text-xs bg-slate-50 border border-slate-200 rounded-lg outline-none focus:bg-white focus:ring-1 focus:ring-slate-800">
+              <button onclick="toggleAdminModal(false); handlePostAdClick();" class="px-3 py-1.5 bg-brand-600 text-white font-bold rounded-lg text-xs hover:bg-brand-700 flex items-center gap-1">
+                <i class="fa-solid fa-plus"></i> নতুন বিজ্ঞাপন
+              </button>
+            </div>
           </div>
           <div id="adminAdsContainer" class="space-y-2.5"></div>
         </div>
 
+        <!-- Admin Area / Spot Management -->
         <div id="adminTabContentAreas" class="space-y-4 hidden">
           <form onsubmit="handleAddNewArea(event)" class="p-4 bg-slate-50 rounded-2xl border border-slate-200 flex flex-col sm:flex-row gap-2.5 items-stretch sm:items-center">
-            <input type="text" id="newAreaInput" required placeholder="নতুন এলাকার নাম লিখুন..." class="flex-1 px-3.5 py-2.5 text-xs sm:text-sm bg-white border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-500">
+            <input type="text" id="newAreaInput" required placeholder="নতুন এলাকা বা স্থানের নাম লিখুন..." class="flex-1 px-3.5 py-2.5 text-xs sm:text-sm bg-white border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-500">
             <button type="submit" class="px-5 py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs sm:text-sm rounded-xl transition shadow flex items-center justify-center gap-1.5">
-              <i class="fa-solid fa-plus"></i> এলাকা যোগ করুন
+              <i class="fa-solid fa-plus"></i> স্থান যোগ করুন
             </button>
           </form>
           <div class="flex items-center justify-between">
             <span class="text-xs font-bold text-slate-500 uppercase">বর্তমান এলাকার তালিকা</span>
           </div>
-          <div id="adminAreasContainer" class="grid grid-cols-1 sm:grid-cols-2 gap-2.5"></div>
+          <div id="adminAreasContainer" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2.5"></div>
         </div>
 
+        <!-- Admin Users & Password Management -->
         <div id="adminTabContentUsers" class="space-y-3 hidden">
-          <span class="text-xs font-bold text-slate-500 uppercase block mb-1">Firebase ইউজার ডাটাবেস</span>
+          <div class="flex items-center justify-between mb-1">
+            <span class="text-xs font-bold text-slate-500 uppercase">ইউজার ডাটা ও পাসওয়ার্ড</span>
+            <span class="text-[11px] text-rose-500 font-semibold">* শুধুমাত্র অ্যাডমিন দেখতে পাবেন</span>
+          </div>
           <div id="adminUsersContainer" class="space-y-2.5"></div>
         </div>
       </div>
@@ -429,6 +422,10 @@
               <label class="block font-semibold text-slate-700 mb-1 uppercase">মোবাইল নম্বর</label>
               <input type="tel" id="editPhone" required class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl focus:bg-white focus:ring-2 focus:ring-brand-500 outline-none">
             </div>
+            <div>
+              <label class="block font-semibold text-slate-700 mb-1 uppercase">পাসওয়ার্ড পরিবর্তন</label>
+              <input type="password" id="editPassword" placeholder="নতুন পাসওয়ার্ড (ঐচ্ছিক)" class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl focus:bg-white focus:ring-2 focus:ring-brand-500 outline-none">
+            </div>
             <button type="submit" class="w-full py-2.5 bg-brand-600 hover:bg-brand-700 text-white font-bold rounded-xl transition shadow">তথ্য সংরক্ষণ করুন</button>
           </form>
         </div>
@@ -455,7 +452,7 @@
             <input type="password" id="loginPassword" required placeholder="••••••••" class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl focus:bg-white focus:ring-2 focus:ring-brand-500 outline-none">
           </div>
           <div class="text-right">
-            <button type="button" onclick="openUserForgotPassword()" class="text-[11px] text-brand-600 hover:underline">পাসওয়ার্ড ভুলে গেছেন? (Gmail/SMS)</button>
+            <button type="button" onclick="openUserForgotPassword()" class="text-[11px] text-brand-600 hover:underline">পাসওয়ার্ড ভুলে গেছেন? (Email OTP)</button>
           </div>
           <button type="submit" class="w-full py-2.5 bg-brand-600 hover:bg-brand-700 text-white font-bold rounded-xl transition shadow">লগইন করুন</button>
           <p class="text-center text-xs text-slate-500 pt-1">
@@ -515,7 +512,7 @@
             </select>
           </div>
           <div>
-            <label class="block font-semibold text-slate-700 mb-1 uppercase">এলাকা *</label>
+            <label class="block font-semibold text-slate-700 mb-1 uppercase">স্থান / এলাকা *</label>
             <select id="formArea" required class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl focus:bg-white focus:ring-2 focus:ring-brand-500 outline-none"></select>
           </div>
         </div>
@@ -572,6 +569,32 @@
     </div>
   </div>
 
+  <!-- Modal: Edit User (Admin only) -->
+  <div id="adminEditUserModal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+    <div class="bg-white rounded-3xl w-full max-w-sm overflow-hidden shadow-2xl border border-slate-100">
+      <div class="px-5 py-3.5 bg-slate-900 text-white flex justify-between items-center">
+        <h3 class="text-sm font-bold">ইউজার তথ্য ও পাসওয়ার্ড এডিট</h3>
+        <button onclick="toggleAdminEditUserModal(false)" class="text-white text-2xl font-bold leading-none">&times;</button>
+      </div>
+      <form onsubmit="handleAdminSaveUser(event)" class="p-5 space-y-3 text-xs">
+        <input type="hidden" id="adminEditUserUid">
+        <div>
+          <label class="block font-semibold text-slate-700 mb-1 uppercase">নাম</label>
+          <input type="text" id="adminEditUserName" required class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl">
+        </div>
+        <div>
+          <label class="block font-semibold text-slate-700 mb-1 uppercase">মোবাইল</label>
+          <input type="tel" id="adminEditUserPhone" required class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl">
+        </div>
+        <div>
+          <label class="block font-semibold text-slate-700 mb-1 uppercase">পাসওয়ার্ড</label>
+          <input type="text" id="adminEditUserPassword" required class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl font-mono">
+        </div>
+        <button type="submit" class="w-full py-2.5 bg-slate-900 text-white font-bold rounded-xl hover:bg-slate-800 transition">সংরক্ষণ করুন</button>
+      </form>
+    </div>
+  </div>
+
   <!-- Modal: Video Player Popup -->
   <div id="videoModal" class="fixed inset-0 bg-black/90 backdrop-blur-md z-50 hidden flex items-center justify-center p-2 sm:p-4">
     <div class="relative w-full max-w-3xl bg-slate-900 rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl border border-slate-800">
@@ -587,16 +610,14 @@
     </div>
   </div>
 
-  <!-- ================= FIREBASE SDK INTEGRATION ================= -->
+  <!-- ================= FIREBASE & EMAILJS INTEGRATION ================= -->
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-app.js";
     import { 
       getAuth, 
       createUserWithEmailAndPassword, 
       signInWithEmailAndPassword, 
-      sendPasswordResetEmail,
-      signInWithPhoneNumber,
-      RecaptchaVerifier,
+      updatePassword,
       signOut, 
       onAuthStateChanged 
     } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-auth.js";
@@ -606,13 +627,16 @@
       addDoc, 
       setDoc, 
       getDoc, 
+      getDocs,
       doc, 
       updateDoc, 
       deleteDoc, 
-      onSnapshot 
+      onSnapshot,
+      query,
+      where
     } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-firestore.js";
 
-    // Firebase Config (নিজেস্ব রিয়েল প্রোজেক্ট ক্রেডেনশিয়াল দিন)
+    // 1. Firebase Configuration
     const firebaseConfig = {
       apiKey: "AIzaSyCjy5f2UMDNIk3NXbLhZ2saRe2t7NTIWP4",
       authDomain: "toletgopalgonj.firebaseapp.com",
@@ -628,7 +652,16 @@
     const auth = getAuth(app);
     const db = getFirestore(app);
 
-    const ADMIN_EMAIL = "admin@toletgopalganj.com";
+    // 2. EmailJS Initialization
+    const EMAILJS_PUBLIC_KEY = "kKeUrs7wO9jJCFePf";
+    const EMAILJS_SERVICE_ID = "service_l9cc301";
+    const EMAILJS_TEMPLATE_ID = "template_6bq6spz";
+
+    if (window.emailjs && EMAILJS_PUBLIC_KEY !== "YOUR_EMAILJS_PUBLIC_KEY") {
+      emailjs.init(EMAILJS_PUBLIC_KEY);
+    }
+
+    const ADMIN_EMAIL = "toletgopalgonj@gmail.com";
     const defaultAreas = [
       "নবীনবাগ", "থানাপাড়া", "বেদগ্রাম", "কোর্ট মসজিদ রোড", 
       "ঘোনাপাড়া (BSMRSTU এলাকা)", "মিয়াপাড়া", "জেলা গেট / পোস্ট অফিস", "পাঞ্জু সিনেমা হল রোড"
@@ -638,16 +671,13 @@
     let areas = [];
     let usersList = [];
     let currentUser = null;
-    let confirmationResultSms = null;
+    let generatedOtp = null;
+    let otpTargetEmail = "";
     const sliderIndexes = {};
 
-    // Invisible Recaptcha for Phone SMS OTP
-    try {
-      window.recaptchaVerifier = new RecaptchaVerifier(auth, 'recaptcha-container', {
-        'size': 'invisible'
-      });
-    } catch(e) {
-      console.warn("Recaptcha Init Warning:", e);
+    function isUserAdmin(u) {
+      if (!u) return false;
+      return u.role === 'admin' || u.email === ADMIN_EMAIL;
     }
 
     // --- Firebase Auth State Listener ---
@@ -656,14 +686,15 @@
         const userDocRef = doc(db, "users", user.uid);
         const userSnap = await getDoc(userDocRef);
         if (userSnap.exists()) {
-          currentUser = { uid: user.uid, email: user.email, ...userSnap.data() };
+          currentUser = { uid: user.uid, ...userSnap.data() };
         } else {
           currentUser = {
             uid: user.uid,
-            name: user.displayName || (user.email ? user.email.split('@')[0] : 'ইউজার'),
-            email: user.email || "",
-            phone: user.phoneNumber || "",
-            role: (user.email === ADMIN_EMAIL) ? "admin" : "user"
+            name: user.displayName || user.email.split('@')[0],
+            email: user.email,
+            phone: "",
+            password: "",
+            role: user.email === ADMIN_EMAIL ? "admin" : "user"
           };
           await setDoc(userDocRef, currentUser);
         }
@@ -689,11 +720,10 @@
     onSnapshot(collection(db, "areas"), (snapshot) => {
       areas = [];
       snapshot.forEach(docSnap => {
-        areas.push(docSnap.data().name);
+        areas.push({ id: docSnap.id, name: docSnap.data().name });
       });
       if (areas.length === 0) {
         defaultAreas.forEach(a => addDoc(collection(db, "areas"), { name: a }));
-        areas = [...defaultAreas];
       }
       populateAreaDropdowns();
       refreshAdminData();
@@ -707,11 +737,6 @@
       refreshAdminData();
     });
 
-    function isUserAdmin(u) {
-      if (!u) return false;
-      return u.role === 'admin' || u.email === ADMIN_EMAIL;
-    }
-
     function populateAreaDropdowns() {
       const areaFilter = document.getElementById('areaFilter');
       const formArea = document.getElementById('formArea');
@@ -721,15 +746,15 @@
       const currentFormVal = formArea.value || '';
 
       areaFilter.innerHTML = '<option value="all">সব এলাকা</option>' + 
-        areas.map(a => `<option value="${a}">${a}</option>`).join('');
+        areas.map(a => `<option value="${a.name}">${a.name}</option>`).join('');
       areaFilter.value = currentFilterVal;
 
-      formArea.innerHTML = areas.map(a => `<option value="${a}">${a}</option>`).join('');
-      if (currentFormVal && areas.includes(currentFormVal)) formArea.value = currentFormVal;
+      formArea.innerHTML = areas.map(a => `<option value="${a.name}">${a.name}</option>`).join('');
+      if (currentFormVal && areas.some(a => a.name === currentFormVal)) formArea.value = currentFormVal;
 
       if (footerAreaList) {
         footerAreaList.innerHTML = areas.slice(0, 5).map(a => `
-          <li><a href="javascript:void(0)" onclick="quickFilterArea('${a}')" class="hover:text-brand-400 transition">${a}</a></li>
+          <li><a href="javascript:void(0)" onclick="quickFilterArea('${a.name}')" class="hover:text-brand-400 transition">${a.name}</a></li>
         `).join('');
       }
     }
@@ -770,16 +795,16 @@
       e.preventDefault();
       const name = document.getElementById('signupName').value.trim();
       const phone = document.getElementById('signupPhone').value.trim();
-      const email = document.getElementById('signupEmail').value.trim();
+      const email = document.getElementById('signupEmail').value.trim().toLowerCase();
       const password = document.getElementById('signupPassword').value;
 
       try {
         const cred = await createUserWithEmailAndPassword(auth, email, password);
         const role = email === ADMIN_EMAIL ? "admin" : "user";
         await setDoc(doc(db, "users", cred.user.uid), {
-          name, phone, email, role
+          name, phone, email, password, role
         });
-        alert('Firebase-এ সফলভাবে অ্যাকাউন্ট তৈরি হয়েছে!');
+        alert('সফলভাবে অ্যাকাউন্ট তৈরি হয়েছে!');
         toggleAuthModal(false);
       } catch (err) {
         alert('রেজিস্ট্রেশন ব্যর্থ: ' + err.message);
@@ -788,7 +813,7 @@
 
     window.handleLoginSubmit = async (e) => {
       e.preventDefault();
-      const email = document.getElementById('loginEmail').value.trim();
+      const email = document.getElementById('loginEmail').value.trim().toLowerCase();
       const password = document.getElementById('loginPassword').value;
 
       try {
@@ -801,7 +826,7 @@
 
     window.handleDedicatedAdminLogin = async (e) => {
       e.preventDefault();
-      const email = document.getElementById('adminLoginEmail').value.trim();
+      const email = document.getElementById('adminLoginEmail').value.trim().toLowerCase();
       const password = document.getElementById('adminLoginPassword').value;
 
       try {
@@ -826,109 +851,103 @@
       }
     };
 
-    /* --- Firebase Password Reset Engine --- */
-    window.setForgotMethod = (method) => {
-      const emailBtn = document.getElementById('btnMethodEmail');
-      const smsBtn = document.getElementById('btnMethodSms');
-      const emailField = document.getElementById('forgotEmailField');
-      const smsField = document.getElementById('forgotSmsField');
-
-      if (method === 'email') {
-        emailBtn.className = "py-2.5 px-3 border-2 border-brand-600 bg-brand-50 text-brand-700 font-bold rounded-xl text-xs flex flex-col items-center gap-1";
-        smsBtn.className = "py-2.5 px-3 border border-slate-200 bg-slate-50 text-slate-600 font-bold rounded-xl text-xs flex flex-col items-center gap-1";
-        emailField.classList.remove('hidden');
-        smsField.classList.add('hidden');
-      } else {
-        smsBtn.className = "py-2.5 px-3 border-2 border-brand-600 bg-brand-50 text-brand-700 font-bold rounded-xl text-xs flex flex-col items-center gap-1";
-        emailBtn.className = "py-2.5 px-3 border border-slate-200 bg-slate-50 text-slate-600 font-bold rounded-xl text-xs flex flex-col items-center gap-1";
-        smsField.classList.remove('hidden');
-        emailField.classList.add('hidden');
-      }
-    };
-
-    window.sendFirebaseEmailReset = async () => {
-      const email = document.getElementById('forgotEmailInput').value.trim();
-      if (!email) {
-        alert('অনুগ্রহ করে সঠিক ইমেইল দিন!');
-        return;
-      }
-      try {
-        await sendPasswordResetEmail(auth, email);
-        alert(`Firebase Console থেকে ${email}-এ পাসওয়ার্ড রিসেট লিংক পাঠানো হয়েছে!`);
-        toggleForgotPassModal(false);
-      } catch (err) {
-        alert('ইমেইল পাঠানো যায়নি: ' + err.message);
-      }
-    };
-
-    window.sendFirebasePhoneOtp = async () => {
-      const phoneNumber = document.getElementById('forgotPhoneInput').value.trim();
-      if (!phoneNumber.startsWith('+')) {
-        alert('অনুগ্রহ করে দেশের কোড সহ নম্বর দিন (উদা: +88017XXXXXXXX)');
-        return;
-      }
-      try {
-        confirmationResultSms = await signInWithPhoneNumber(auth, phoneNumber, window.recaptchaVerifier);
-        document.getElementById('forgotStepChoice').classList.add('hidden');
-        document.getElementById('forgotStepOtp').classList.remove('hidden');
-        alert('Firebase SMS-এর মাধ্যমে আপনার ফোনে ভেরিফিকেশন কোড পাঠানো হয়েছে!');
-      } catch (err) {
-        alert('SMS পাঠাতে সমস্যা হয়েছে: ' + err.message);
-      }
-    };
-
-    window.verifyFirebaseSmsOtp = async () => {
-      const code = document.getElementById('firebaseOtpInput').value.trim();
-      if (!code || !confirmationResultSms) {
-        alert('OTP কোড দিন!');
-        return;
-      }
-      try {
-        await confirmationResultSms.confirm(code);
-        alert('ফোন ভেরিফিকেশন সম্পন্ন হয়েছে!');
-        toggleForgotPassModal(false);
-      } catch (err) {
-        alert('ভুল SMS OTP কোড!');
-      }
-    };
-
+    /* --- EmailJS OTP Password Reset Engine --- */
     window.openUserForgotPassword = () => {
       toggleAuthModal(false);
+      document.getElementById('otpStepEmail').classList.remove('hidden');
+      document.getElementById('otpStepVerify').classList.add('hidden');
+      document.getElementById('resetTargetEmail').value = '';
+      document.getElementById('inputEnteredOtp').value = '';
+      document.getElementById('inputNewPassword').value = '';
       toggleForgotPassModal(true);
-      window.setForgotMethod('email');
     };
 
-    window.openAdminForgotPassword = () => {
-      toggleAdminLoginModal(false);
-      toggleForgotPassModal(true);
-      window.setForgotMethod('email');
-      document.getElementById('forgotEmailInput').value = ADMIN_EMAIL;
-    };
-
-    /* --- Rating System --- */
-    window.rateListing = async (adId, score, e) => {
-      if (e) e.stopPropagation();
-      if (!currentUser) {
-        alert('রেটিং দিতে হলে প্রথমে লগইন করুন!');
-        toggleAuthModal(true);
+    window.handleSendEmailOtp = async () => {
+      const email = document.getElementById('resetTargetEmail').value.trim().toLowerCase();
+      if (!email) {
+        alert('অনুগ্রহ করে আপনার সঠিক ইমেইল ঠিকানা দিন!');
         return;
       }
-      const ad = listings.find(item => item.id === adId);
-      if (!ad) return;
 
-      const ratings = ad.ratings || {};
-      ratings[currentUser.uid] = score;
+      const btn = document.getElementById('btnSendOtp');
+      btn.disabled = true;
+      btn.innerText = "OTP পাঠানো হচ্ছে...";
 
-      await updateDoc(doc(db, "listings", adId), { ratings });
+      try {
+        // ১. চেক করা ইউজার ডাটাবেসে বিদ্যমান কি না
+        const q = query(collection(db, "users"), where("email", "==", email));
+        const snap = await getDocs(q);
+
+        if (snap.empty) {
+          alert('এই ইমেইলে কোনো অ্যাকাউন্ট পাওয়া যায়নি!');
+          btn.disabled = false;
+          btn.innerText = "OTP কোড পাঠান";
+          return;
+        }
+
+        const userData = snap.docs[0].data();
+
+        // অ্যাডমিন ইমেইল চেক (অ্যাডমিনের তথ্য সাধারণ উপায়ে পরিবর্তন হবে না)
+        if (email === ADMIN_EMAIL) {
+          alert('অ্যাডমিন পাসওয়ার্ড এই ফর্ম থেকে রিসেট করা যাবে না!');
+          btn.disabled = false;
+          btn.innerText = "OTP কোড পাঠান";
+          return;
+        }
+
+        // ২. ৬ ডিজিট ওটিপি তৈরি
+        generatedOtp = Math.floor(100000 + Math.random() * 900000).toString();
+        otpTargetEmail = email;
+
+        // ৩. EmailJS দিয়ে ইমেইল সেন্ড করা
+        await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
+          to_email: email,
+          to_name: userData.name || "সম্মানিত ব্যবহারকারী",
+          pass_otp: generatedOtp
+        });
+
+        alert(`সফলভাবে ${email} ঠিকানায় ৬ সংখ্যার OTP কোড পাঠানো হয়েছে! ইনবক্স অথবা স্প্যাম ফোল্ডার চেক করুন।`);
+        document.getElementById('otpStepEmail').classList.add('hidden');
+        document.getElementById('otpStepVerify').classList.remove('hidden');
+      } catch (err) {
+        alert('ইমেইল পাঠানো যায়নি: ' + err.message);
+      } finally {
+        btn.disabled = false;
+        btn.innerText = "OTP কোড পাঠান";
+      }
     };
 
-    function calculateAverageRating(ratings) {
-      if (!ratings) return { avg: "0.0", count: 0 };
-      const scores = Object.values(ratings);
-      if (scores.length === 0) return { avg: "0.0", count: 0 };
-      const sum = scores.reduce((a, b) => a + b, 0);
-      return { avg: (sum / scores.length).toFixed(1), count: scores.length };
-    }
+    window.handleVerifyOtpAndReset = async () => {
+      const enteredOtp = document.getElementById('inputEnteredOtp').value.trim();
+      const newPass = document.getElementById('inputNewPassword').value.trim();
+
+      if (!enteredOtp || enteredOtp !== generatedOtp) {
+        alert('ভুল OTP কোড! আবার চেষ্টা করুন।');
+        return;
+      }
+
+      if (newPass.length < 6) {
+        alert('পাসওয়ার্ড কমপক্ষে ৬ সংখ্যার হতে হবে!');
+        return;
+      }
+
+      try {
+        // ডাটাবেসে পাসওয়ার্ড আপডেট
+        const q = query(collection(db, "users"), where("email", "==", otpTargetEmail));
+        const snap = await getDocs(q);
+        if (!snap.empty) {
+          const userDoc = snap.docs[0];
+          await updateDoc(doc(db, "users", userDoc.id), {
+            password: newPass
+          });
+          alert('পাসওয়ার্ড সফলভাবে পরিবর্তন করা হয়েছে! এখন লগইন করুন।');
+          toggleForgotPassModal(false);
+          toggleAuthModal(true);
+        }
+      } catch (err) {
+        alert('পাসওয়ার্ড আপডেট করতে সমস্যা হয়েছে: ' + err.message);
+      }
+    };
 
     /* --- Listings Rendering --- */
     window.renderListings = (items) => {
@@ -950,17 +969,6 @@
         const typeBadge = item.type === 'ফ্যামিলি' ? 'bg-blue-50 text-blue-700 border-blue-200' :
                           item.type === 'মেস সিট' ? 'bg-amber-50 text-amber-700 border-amber-200' : 
                           'bg-emerald-50 text-emerald-700 border-emerald-200';
-
-        const { avg, count } = calculateAverageRating(item.ratings);
-        let starsHtml = '';
-        for (let s = 1; s <= 5; s++) {
-          const isFilled = s <= Math.round(Number(avg));
-          starsHtml += `
-            <button type="button" onclick="rateListing('${item.id}', ${s}, event)" class="${isFilled ? 'text-amber-400' : 'text-slate-300'} hover:text-amber-500 hover:scale-125 transition-transform text-xs">
-              <i class="fa-solid fa-star"></i>
-            </button>
-          `;
-        }
 
         const images = (item.images && item.images.length > 0) ? item.images : ['https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?auto=format&fit=crop&w=800&q=80'];
 
@@ -1003,10 +1011,6 @@
               <div class="flex items-center gap-1 text-[11px] sm:text-xs font-semibold text-brand-700 mb-2">
                 <i class="fa-solid fa-location-dot text-brand-500"></i>
                 <span class="truncate">${item.area}</span>
-              </div>
-              <div class="flex items-center justify-between bg-slate-50 border border-slate-100 rounded-xl px-2.5 py-1.5 mb-2.5">
-                <div class="flex items-center gap-1">${starsHtml}<span class="text-[11px] font-black text-slate-800 ml-1">${avg}</span></div>
-                <span class="text-[10px] text-slate-400 font-medium">(${count} রিভিউ)</span>
               </div>
               ${item.specs ? `<div class="bg-slate-50 rounded-lg p-2 mb-2 text-[11px] sm:text-xs text-slate-600 flex items-center gap-1.5 border border-slate-100"><i class="fa-solid fa-layer-group text-slate-400 text-xs"></i><span class="truncate font-medium">${item.specs}</span></div>` : ''}
               <p class="text-[11px] sm:text-xs text-slate-500 line-clamp-2 leading-relaxed">${item.desc || 'বিস্তারিত জানতে যোগাযোগ করুন।'}</p>
@@ -1063,9 +1067,8 @@
 
         let video = "";
         if (videoFile) {
-          // ভিডিও সাইজ চেক (Base64 হিসেবে স্টোর করার জন্য ম্যাক্সিমাম সাইজ লিমিটেশন)
-          if (videoFile.size > 2 * 1024 * 1024) {
-            alert('ভিডিও সাইজ ২ মেগাবাইটের কম হতে হবে!');
+          if (videoFile.size > 3 * 1024 * 1024) {
+            alert('ভিডিও সাইজ ৩MB এর কম হতে হবে!');
             submitBtn.disabled = false;
             submitBtn.innerText = "সংরক্ষণ করুন";
             return;
@@ -1092,8 +1095,7 @@
         if (editId) {
           await updateDoc(doc(db, "listings", editId), data);
         } else {
-          data.ratings = {};
-          if (images.length === 0) {
+          if (!data.images) {
             data.images = ['https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?auto=format&fit=crop&w=800&q=80'];
           }
           await addDoc(collection(db, "listings"), data);
@@ -1110,7 +1112,7 @@
       }
     };
 
-    /* --- Profile & Dashboard Operations --- */
+    /* --- Profile & User Dashboard --- */
     window.openProfileModal = () => {
       if (!currentUser) {
         toggleAuthModal(true);
@@ -1129,6 +1131,7 @@
 
       document.getElementById('editName').value = currentUser.name || '';
       document.getElementById('editPhone').value = currentUser.phone || '';
+      document.getElementById('editPassword').value = '';
 
       renderMyAds();
       switchProfileTab('ads');
@@ -1202,11 +1205,12 @@
       document.getElementById('imgRequiredStar').classList.add('hidden');
 
       toggleProfileModal(false);
+      toggleAdminModal(false);
       toggleModal(true);
     };
 
     window.deleteMyAd = async (id) => {
-      if (confirm('আপনি কি এই বিজ্ঞাপনটি মুছে ফেলতে চান?')) {
+      if (confirm('আপনি কি এই বিজ্ঞাপনটি ডিলিট করতে চান?')) {
         await deleteDoc(doc(db, "listings", id));
       }
     };
@@ -1216,21 +1220,29 @@
       if (!currentUser) return;
       const name = document.getElementById('editName').value.trim();
       const phone = document.getElementById('editPhone').value.trim();
+      const newPassword = document.getElementById('editPassword').value.trim();
 
       try {
-        await updateDoc(doc(db, "users", currentUser.uid), { name, phone });
+        const updateObj = { name, phone };
+        if (newPassword && newPassword.length >= 6) {
+          updateObj.password = newPassword;
+        }
+
+        await updateDoc(doc(db, "users", currentUser.uid), updateObj);
         currentUser.name = name;
         currentUser.phone = phone;
+        if (updateObj.password) currentUser.password = newPassword;
+
         updateAuthNav();
         document.getElementById('profileModalName').innerText = name;
         document.getElementById('profileModalPhone').innerText = phone;
-        alert('প্রোফাইল সফলভাবে আপডেট করা হয়েছে!');
+        alert('তথ্য সফলভাবে সংরক্ষিত হয়েছে!');
       } catch (err) {
         alert('আপডেট ব্যর্থ: ' + err.message);
       }
     };
 
-    /* --- Admin Actions on Firestore --- */
+    /* --- Complete Admin Control Operations --- */
     window.switchAdminTab = (tab) => {
       document.getElementById('adminTabContentAds').classList.toggle('hidden', tab !== 'ads');
       document.getElementById('adminTabContentAreas').classList.toggle('hidden', tab !== 'areas');
@@ -1247,34 +1259,39 @@
       });
     };
 
+    // 1. Admin Area / Spot Controls
     window.handleAddNewArea = async (e) => {
       e.preventDefault();
       const input = document.getElementById('newAreaInput');
       const val = input.value.trim();
-      if (!val || areas.includes(val)) return;
+      if (!val || areas.some(a => a.name === val)) return;
       await addDoc(collection(db, "areas"), { name: val });
       input.value = '';
     };
 
+    window.adminDeleteArea = async (id, name) => {
+      if (confirm(`'${name}' স্থানটি কি ডিলিট করতে চান?`)) {
+        await deleteDoc(doc(db, "areas", id));
+      }
+    };
+
+    window.adminEditArea = async (id, oldName) => {
+      const newName = prompt("স্থানটির নতুন নাম দিন:", oldName);
+      if (newName && newName.trim() !== "" && newName !== oldName) {
+        await updateDoc(doc(db, "areas", id), { name: newName.trim() });
+      }
+    };
+
+    // 2. Admin Ads Controls
     window.adminDeleteAd = async (id) => {
       if (confirm('অ্যাডমিন অ্যাকশন: এই বিজ্ঞাপনটি স্থায়ীভাবে ডিলিট করতে চান?')) {
         await deleteDoc(doc(db, "listings", id));
       }
     };
 
-    window.adminDeleteArea = async (areaName) => {
-      if (confirm(`'${areaName}' এলাকা মুছে ফেলতে চান?`)) {
-        // Find document ID
-        const snapshot = await collection(db, "areas");
-        // Firebase snapshot cleanup
-        areas = areas.filter(a => a !== areaName);
-        populateAreaDropdowns();
-      }
-    };
-
     window.filterAdminAds = (keyword) => {
       const q = keyword.toLowerCase();
-      const filtered = listings.filter(l => l.title.toLowerCase().includes(q) || l.area.toLowerCase().includes(q));
+      const filtered = listings.filter(l => (l.title || '').toLowerCase().includes(q) || (l.area || '').toLowerCase().includes(q));
       renderAdminAdsList(filtered);
     };
 
@@ -1286,12 +1303,50 @@
           <div class="min-w-0">
             <span class="text-[10px] font-bold text-slate-700 bg-slate-200 px-1.5 py-0.5 rounded">${item.type}</span>
             <h5 class="text-xs font-bold text-slate-900 truncate mt-1">${item.title}</h5>
-            <p class="text-[11px] text-slate-500">${item.area} • ৳${item.rent}</p>
+            <p class="text-[11px] text-slate-500">${item.area} • ৳${item.rent} • মোবাইল: ${item.phone}</p>
           </div>
-          <button onclick="adminDeleteAd('${item.id}')" class="px-2.5 py-1 bg-rose-50 hover:bg-rose-100 text-rose-700 rounded-lg text-xs font-semibold">ডিলিট</button>
+          <div class="flex items-center gap-1.5 shrink-0">
+            <button onclick="editMyAd('${item.id}')" class="px-2.5 py-1 bg-brand-50 hover:bg-brand-100 text-brand-700 rounded-lg text-xs font-semibold">এডিট</button>
+            <button onclick="adminDeleteAd('${item.id}')" class="px-2.5 py-1 bg-rose-50 hover:bg-rose-100 text-rose-700 rounded-lg text-xs font-semibold">ডিলিট</button>
+          </div>
         </div>
       `).join('');
     }
+
+    // 3. Admin Users Controls (With Password Visibility for Admin Only)
+    window.adminEditUserPrompt = (uid) => {
+      const u = usersList.find(usr => usr.uid === uid);
+      if (!u) return;
+
+      document.getElementById('adminEditUserUid').value = u.uid;
+      document.getElementById('adminEditUserName').value = u.name || '';
+      document.getElementById('adminEditUserPhone').value = u.phone || '';
+      document.getElementById('adminEditUserPassword').value = u.password || '';
+
+      toggleAdminEditUserModal(true);
+    };
+
+    window.handleAdminSaveUser = async (e) => {
+      e.preventDefault();
+      const uid = document.getElementById('adminEditUserUid').value;
+      const name = document.getElementById('adminEditUserName').value.trim();
+      const phone = document.getElementById('adminEditUserPhone').value.trim();
+      const password = document.getElementById('adminEditUserPassword').value.trim();
+
+      try {
+        await updateDoc(doc(db, "users", uid), { name, phone, password });
+        alert('ইউজার ডাটা সফলভাবে আপডেট করা হয়েছে!');
+        toggleAdminEditUserModal(false);
+      } catch (err) {
+        alert('আপডেট ব্যর্থ: ' + err.message);
+      }
+    };
+
+    window.adminDeleteUser = async (uid, name) => {
+      if (confirm(`'${name}' এর সম্পূর্ণ অ্যাকাউন্ট মুছে ফেলতে চান?`)) {
+        await deleteDoc(doc(db, "users", uid));
+      }
+    };
 
     window.refreshAdminData = () => {
       document.getElementById('adminStatAds').innerText = listings.length;
@@ -1305,29 +1360,55 @@
 
       renderAdminAdsList(listings);
 
+      // Render Areas with Edit & Remove Buttons
       const areasContainer = document.getElementById('adminAreasContainer');
       if (areasContainer) {
         areasContainer.innerHTML = areas.map(a => `
           <div class="p-2.5 bg-slate-50 border border-slate-200 rounded-xl flex items-center justify-between text-xs">
-            <span class="font-medium text-slate-700">${a}</span>
-          </div>
-        `).join('');
-      }
-
-      const usersContainer = document.getElementById('adminUsersContainer');
-      if (usersContainer) {
-        usersContainer.innerHTML = usersList.map(u => `
-          <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 flex items-center justify-between text-xs">
-            <div>
-              <b>${u.name || 'User'}</b> (${u.role || 'user'})<br>
-              <span class="text-slate-500">${u.email || 'No email'} | ${u.phone || 'No phone'}</span>
+            <span class="font-semibold text-slate-800 truncate">${a.name}</span>
+            <div class="flex items-center gap-1 shrink-0">
+              <button onclick="adminEditArea('${a.id}', '${a.name}')" class="text-brand-600 hover:text-brand-700 p-1" title="এডিট"><i class="fa-solid fa-pen-to-square"></i></button>
+              <button onclick="adminDeleteArea('${a.id}', '${a.name}')" class="text-rose-500 hover:text-rose-700 p-1" title="ডিলিট"><i class="fa-solid fa-trash"></i></button>
             </div>
           </div>
         `).join('');
       }
+
+      // Render Users List (Admin Views Password - Admin info hidden from others)
+      const usersContainer = document.getElementById('adminUsersContainer');
+      if (usersContainer) {
+        usersContainer.innerHTML = usersList.map(u => {
+          const isAdminUser = u.email === ADMIN_EMAIL || u.role === 'admin';
+          return `
+            <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-xs">
+              <div>
+                <div class="flex items-center gap-2">
+                  <span class="font-bold text-slate-900">${u.name || 'নাম নেই'}</span>
+                  <span class="px-1.5 py-0.5 rounded text-[10px] font-bold ${isAdminUser ? 'bg-rose-100 text-rose-700' : 'bg-emerald-100 text-emerald-700'}">${u.role || 'user'}</span>
+                </div>
+                <div class="text-slate-500 mt-1 flex flex-wrap gap-x-3 gap-y-0.5">
+                  <span><i class="fa-solid fa-envelope mr-1"></i>${u.email}</span>
+                  <span><i class="fa-solid fa-phone mr-1"></i>${u.phone || 'নেই'}</span>
+                  <span class="text-rose-600 font-mono font-bold bg-rose-50 px-1 rounded border border-rose-200">
+                    <i class="fa-solid fa-key mr-1"></i>পাসওয়ার্ড: ${u.password || 'N/A'}
+                  </span>
+                </div>
+              </div>
+              ${!isAdminUser ? `
+                <div class="flex items-center gap-1.5 shrink-0">
+                  <button onclick="adminEditUserPrompt('${u.uid}')" class="px-2.5 py-1 bg-slate-200 hover:bg-slate-300 text-slate-800 rounded-lg text-xs font-semibold">এডিট</button>
+                  <button onclick="adminDeleteUser('${u.uid}', '${u.name}')" class="px-2.5 py-1 bg-rose-100 hover:bg-rose-200 text-rose-700 rounded-lg text-xs font-semibold">ডিলিট</button>
+                </div>
+              ` : `
+                <span class="text-[10px] text-slate-400 font-bold uppercase tracking-wider">Root Admin</span>
+              `}
+            </div>
+          `;
+        }).join('');
+      }
     };
 
-    /* --- Image Slider Helper --- */
+    /* --- Image Slider & Helpers --- */
     window.slideImage = (id, direction, e) => {
       if (e) e.stopPropagation();
       const listing = listings.find(item => item.id === id);
@@ -1364,9 +1445,9 @@
     function readFileAsBase64(file) {
       return new Promise((resolve, reject) => {
         const reader = new FileReader();
+        reader.readAsDataURL(file);
         reader.onload = () => resolve(reader.result);
         reader.onerror = reject;
-        reader.readAsDataURL(file);
       });
     }
 
@@ -1376,6 +1457,7 @@
     window.toggleForgotPassModal = (s) => document.getElementById('forgotPassModal').classList.toggle('hidden', !s);
     window.toggleAdminModal = (s) => document.getElementById('adminModal').classList.toggle('hidden', !s);
     window.toggleProfileModal = (s) => document.getElementById('profileModal').classList.toggle('hidden', !s);
+    window.toggleAdminEditUserModal = (s) => document.getElementById('adminEditUserModal').classList.toggle('hidden', !s);
     window.toggleModal = (s) => {
       if (!s) {
         document.getElementById('listingForm').reset();
@@ -1397,13 +1479,7 @@
       document.getElementById('authModalTitle').innerText = v === 'signup' ? 'নতুন অ্যাকাউন্ট খুলুন' : 'লগইন করুন';
     };
 
-    window.handlePostAdClick = () => {
-      if (currentUser) {
-        toggleModal(true);
-      } else {
-        toggleAuthModal(true);
-      }
-    };
+    window.handlePostAdClick = () => currentUser ? toggleModal(true) : toggleAuthModal(true);
 
     window.playVideo = (u, e) => {
       if (e) e.stopPropagation();
