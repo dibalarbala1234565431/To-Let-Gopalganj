@@ -80,7 +80,7 @@
     <div class="max-w-4xl mx-auto text-center space-y-3">
       <span class="bg-emerald-700/60 text-emerald-200 px-3 py-1 rounded-full text-xs font-medium uppercase tracking-wider inline-block">গোপালগঞ্জ জেলা সদর ও আশপাশ</span>
       <h1 class="text-3xl md:text-4xl font-extrabold tracking-tight">ছবি ও ভিডিও দেখে বাসা বা মেস পছন্দ করুন</h1>
-      <p class="text-emerald-100 text-sm md:text-base max-w-xl mx-auto">ফ্যামিলি ফ্ল্যাট, ব্যাচেলর রুম কিংবা স্টুডেন্ট মেস — সরাসরি মালিকের সাথে এসএমএস ও ভয়েসে কথা বলুন।</p>
+      <p class="text-emerald-100 text-sm md:text-base max-w-xl mx-auto">ফ্যামিলি ফ্ল্যাট, ব্যাচেলর রুম কিংবা স্টুডেন্ট মেস — সরাসরি মালিকের সাথে এসএমএস ও ভয়েসে কথা বলুন।</p>
     </div>
   </section>
 
@@ -88,10 +88,10 @@
   <section class="max-w-6xl mx-auto px-4 -mt-6">
     <div class="bg-white rounded-2xl shadow-xl border border-slate-100 p-4 md:p-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3">
       <div>
-        <label class="text-xs font-semibold text-slate-500 mb-1 block">কী-ওয়ার্ড দিয়ে খুঁজুন</label>
+        <label class="text-xs font-semibold text-slate-500 mb-1 block">কী-ওয়ার্ড দিয়ে খুঁজুন</label>
         <div class="relative">
           <i class="fa-solid fa-magnifying-glass absolute left-3 top-3 text-slate-400 text-sm"></i>
-          <input type="text" id="searchInput" oninput="applyFilters()" placeholder="বাসার নাম বা এলাকা..." class="w-full pl-9 pr-3 py-2 text-sm rounded-lg border border-slate-200 focus:outline-none focus:ring-2 focus:ring-emerald-500">
+          <input type="text" id="searchInput" name="search_query" autocomplete="off" oninput="applyFilters()" placeholder="বাসার নাম বা এলাকা..." class="w-full pl-9 pr-3 py-2 text-sm rounded-lg border border-slate-200 focus:outline-none focus:ring-2 focus:ring-emerald-500">
         </div>
       </div>
 
@@ -102,7 +102,7 @@
       </div>
 
       <div>
-        <label class="text-xs font-semibold text-slate-500 mb-1 block">ভাড়ার ধরন</label>
+        <label class="text-xs font-semibold text-slate-500 mb-1 block">ভাড়ার ধরন</label>
         <select id="typeFilter" onchange="applyFilters()" class="w-full px-3 py-2 text-sm rounded-lg border border-slate-200 focus:outline-none focus:ring-2 focus:ring-emerald-500 bg-white">
           <option value="all">সব ধরন</option>
           <option value="ফ্যামিলি">ফ্যামিলি বাসা</option>
@@ -133,7 +133,7 @@
 
     <div id="emptyState" class="hidden text-center py-16 bg-white rounded-2xl border border-slate-100 mt-4">
       <i class="fa-regular fa-face-frown text-4xl text-slate-400 mb-3 block"></i>
-      <h3 class="text-lg font-bold text-slate-800">কোনো বিজ্ঞাপন পাওয়া যায়নি</h3>
+      <h3 class="text-lg font-bold text-slate-800">কোনো বিজ্ঞাপন পাওয়া যায়নি</h3>
       <p class="text-sm text-slate-500">অন্য কোনো এলাকা বা ফিল্টার নির্বাচন করে চেষ্টা করুন।</p>
     </div>
   </main>
@@ -149,7 +149,7 @@
           <span class="text-lg font-bold text-white tracking-tight">টু-লেট <span class="text-emerald-400">গোপালগঞ্জ</span></span>
         </div>
         <p class="text-xs text-slate-400 leading-relaxed">
-          গোপালগঞ্জ জেলা সদর ও বিশ্ববিদ্যালয়ের আশেপাশের বাসা, মেস এবং সাবলেট খোঁজার ডিজিটাল মাধ্যম।
+          গোপালগঞ্জ জেলা সদর ও বিশ্ববিদ্যালয়ের আশেপাশের বাসা, মেস এবং সাবলেট খোঁজার ডিজিটাল মাধ্যম।
         </p>
       </div>
 
@@ -165,7 +165,7 @@
       </div>
 
       <div>
-        <h4 class="text-sm font-bold text-white uppercase tracking-wider mb-3">হেল্পলাইন ও সহায়তা</h4>
+        <h4 class="text-sm font-bold text-white uppercase tracking-wider mb-3">হেল্পলাইন ও সহায়তা</h4>
         <ul class="text-xs space-y-2 text-slate-400">
           <li class="flex items-center gap-2"><i class="fa-solid fa-phone text-emerald-500"></i> <span>+880 1705-530627</span></li>
           <li class="flex items-center gap-2"><i class="fa-solid fa-envelope text-emerald-500"></i> <span>toletgopalgonj@gmail.com</span></li>
@@ -176,7 +176,7 @@
       <div>
         <h4 class="text-sm font-bold text-white uppercase tracking-wider mb-3">বিজ্ঞাপনদাতাদের জন্য</h4>
         <p class="text-xs text-slate-400 leading-relaxed mb-3">
-          আপনার খালি বাসার বিজ্ঞাপন দিন খুব সহজে এবং সরাসরি ভাড়াটিয়ার সাথে এসএমএস ও ভয়েসে যোগাযোগ করুন।
+          আপনার খালি বাসার বিজ্ঞাপন দিন খুব সহজে এবং সরাসরি ভাড়াটিয়ার সাথে এসএমএস ও ভয়েসে যোগাযোগ করুন।
         </p>
         <button onclick="openAdModalForCreate()" class="w-full py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg text-xs font-bold transition shadow-sm">
           <i class="fa-solid fa-plus mr-1"></i> ফ্রী বিজ্ঞাপন দিন
@@ -206,7 +206,7 @@
     </div>
   </div>
 
-  <!-- Modal: Direct Chat Box (SMS + Beautiful Voice SMS) -->
+  <!-- Modal: Direct Chat Box -->
   <div id="chatModal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-2 sm:p-4">
     <div class="bg-white rounded-2xl w-full max-w-lg overflow-hidden shadow-2xl border border-slate-100 flex flex-col h-[90vh] max-h-[650px]">
       <div class="px-4 py-3 bg-emerald-700 text-white flex justify-between items-center flex-shrink-0 shadow-xs">
@@ -215,7 +215,7 @@
             <i class="fa-solid fa-user"></i>
           </div>
           <div>
-            <h4 id="chatPartnerName" class="font-bold text-sm leading-tight">বাড়িওয়ালা / ভাড়াটিয়া</h4>
+            <h4 id="chatPartnerName" class="font-bold text-sm leading-tight">বাড়িওয়ালা / ভাড়াটিয়া</h4>
             <span id="chatListingTitle" class="text-[11px] text-emerald-200 truncate max-w-[220px] block">বাসার নাম</span>
           </div>
         </div>
@@ -228,7 +228,7 @@
       <div id="recordingBanner" class="hidden bg-rose-50 border-t border-rose-200 px-4 py-2.5 flex items-center justify-between text-xs text-rose-700">
         <div class="flex items-center gap-2">
           <span class="w-2.5 h-2.5 bg-rose-600 rounded-full animate-ping"></span>
-          <span class="font-bold">ভয়েস রেকর্ড হচ্ছে...</span>
+          <span class="font-bold">ভয়েস রেকর্ড হচ্ছে...</span>
           <span id="recordingTimer" class="font-mono font-bold ml-1 bg-rose-200 px-1.5 py-0.5 rounded">00:00</span>
         </div>
         <div class="flex items-center gap-2">
@@ -289,7 +289,7 @@
 
         <div class="text-right -mt-1">
           <button type="button" onclick="openForgotPasswordModal()" class="text-xs text-emerald-600 hover:text-emerald-800 font-semibold transition">
-            পাসওয়ার্ড ভুলে গেছেন?
+            পাসওয়ার্ড ভুলে গেছেন?
           </button>
         </div>
         
@@ -360,7 +360,7 @@
           </div>
         </div>
         <div class="text-right -mt-1">
-          <button type="button" onclick="openForgotPasswordModal()" class="text-xs text-emerald-600 hover:text-emerald-800 font-semibold">পাসওয়ার্ড ভুলে গেছেন?</button>
+          <button type="button" onclick="openForgotPasswordModal()" class="text-xs text-emerald-600 hover:text-emerald-800 font-semibold">পাসওয়ার্ড ভুলে গেছেন?</button>
         </div>
         <button type="submit" class="w-full py-2.5 bg-slate-900 hover:bg-black text-white rounded-lg font-bold transition shadow-sm mt-2 flex items-center justify-center gap-2">
           <i class="fa-solid fa-lock-open text-xs"></i> <span>অ্যাডমিন হিসেবে প্রবেশ করুন</span>
@@ -390,7 +390,7 @@
 
       <div id="otpStep2" class="p-6 space-y-3.5 text-sm hidden">
         <div class="bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs p-2.5 rounded-lg">
-          আপনার ইমেইলে ৬ সংখ্যার কোড পাঠানো হয়েছে। কোডটি নিচে লিখুন:
+          আপনার ইমেইলে ৬ সংখ্যার কোড পাঠানো হয়েছে। কোডটি নিচে লিখুন:
         </div>
         <div>
           <label class="block font-medium text-slate-700 mb-1">৬ সংখ্যার OTP কোড</label>
@@ -407,7 +407,7 @@
     </div>
   </div>
 
-  <!-- Modal: Admin Panel (with User Edit & Delete) -->
+  <!-- Modal: Admin Panel -->
   <div id="adminPanelModal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-3 md:p-6">
     <div class="bg-white rounded-2xl w-full max-w-5xl overflow-hidden shadow-2xl border border-slate-100 flex flex-col max-h-[92vh]">
       <div class="px-6 py-4 bg-slate-900 text-white flex justify-between items-center">
@@ -424,10 +424,10 @@
             <i class="fa-solid fa-users-gear mr-1"></i> ব্যবহারকারী ও পাসওয়ার্ড
           </button>
           <button id="adminTabLocations" onclick="switchAdminTab('locations')" class="px-3 py-1.5 bg-white text-slate-700 border border-slate-300 rounded-lg text-xs font-bold hover:bg-slate-50">
-            <i class="fa-solid fa-map-location-dot mr-1"></i> এলাকা ও স্থান নিয়ন্ত্রণ
+            <i class="fa-solid fa-map-location-dot mr-1"></i> এলাকা ও স্থান নিয়ন্ত্রণ
           </button>
           <button id="adminTabAds" onclick="switchAdminTab('ads')" class="px-3 py-1.5 bg-white text-slate-700 border border-slate-300 rounded-lg text-xs font-bold hover:bg-slate-50">
-            <i class="fa-solid fa-list-check mr-1"></i> বিজ্ঞাপন নিয়ন্ত্রণ
+            <i class="fa-solid fa-list-check mr-1"></i> বিজ্ঞাপন নিয়ন্ত্রণ
           </button>
         </div>
         <button onclick="exportUsersToExcel()" class="bg-emerald-700 hover:bg-emerald-800 text-white px-3 py-1.5 rounded-lg text-xs font-bold flex items-center gap-1.5 shadow-sm">
@@ -539,7 +539,7 @@
       </div>
 
       <div class="p-4 bg-slate-50 border-b border-slate-100 flex justify-between items-center">
-        <span class="text-sm font-bold text-slate-700">আমার দেওয়া বিজ্ঞাপনসমূহ</span>
+        <span class="text-sm font-bold text-slate-700">আমার দেওয়া বিজ্ঞাপনসমূহ</span>
         <button onclick="toggleDashboardModal(false); openAdModalForCreate();" class="text-xs bg-emerald-600 hover:bg-emerald-700 text-white font-semibold px-3 py-1.5 rounded-lg flex items-center gap-1">
           <i class="fa-solid fa-plus"></i> নতুন বিজ্ঞাপন দিন
         </button>
@@ -549,13 +549,13 @@
     </div>
   </div>
 
-  <!-- Modal: Add / Edit Ad Modal (with 1 GB Video Validation & Firebase Integration) -->
+  <!-- Modal: Add / Edit Ad Modal -->
   <div id="adModal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-2 sm:p-4">
     <div class="bg-white rounded-2xl w-full max-w-2xl overflow-hidden shadow-2xl border border-slate-100 flex flex-col max-h-[92vh]">
       <div class="px-6 py-4 bg-gradient-to-r from-emerald-600 to-teal-700 text-white flex justify-between items-center flex-shrink-0">
         <div>
           <h3 id="adModalTitle" class="text-base font-bold">নতুন বাসার বিজ্ঞাপন প্রকাশ করুন</h3>
-          <span class="text-[11px] text-emerald-100 block">সঠিক তথ্য দিলে দ্রুত ভাড়াটিয়া পাওয়ার সম্ভাবনা বাড়ে</span>
+          <span class="text-[11px] text-emerald-100 block">সঠিক তথ্য দিলে দ্রুত ভাড়াটিয়া পাওয়ার সম্ভাবনা বাড়ে</span>
         </div>
         <button onclick="toggleAdModal(false)" class="text-white hover:text-slate-200 text-2xl font-bold">&times;</button>
       </div>
@@ -571,7 +571,7 @@
 
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
             <div>
-              <label class="block font-medium text-slate-700 mb-1">ভাড়ার ধরন <span class="text-rose-500">*</span></label>
+              <label class="block font-medium text-slate-700 mb-1">ভাড়ার ধরন <span class="text-rose-500">*</span></label>
               <select id="formType" required class="w-full p-2.5 bg-white rounded-lg border border-slate-200 focus:ring-2 focus:ring-emerald-500 outline-none">
                 <option value="ফ্যামিলি">ফ্যামিলি ফ্ল্যাট</option>
                 <option value="ব্যাচেলর">ব্যাচেলর রুম</option>
@@ -590,7 +590,7 @@
         <div class="bg-slate-50 p-3.5 rounded-xl border border-slate-200 space-y-3">
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
             <div>
-              <label class="block font-medium text-slate-700 mb-1">মাসিক ভাড়া (টাকা) <span class="text-rose-500">*</span></label>
+              <label class="block font-medium text-slate-700 mb-1">মাসিক ভাড়া (টাকা) <span class="text-rose-500">*</span></label>
               <div class="relative">
                 <span class="absolute left-3 top-2.5 text-slate-400 font-bold">৳</span>
                 <input type="number" id="formRent" required placeholder="৬৫০০" class="w-full pl-8 pr-3 py-2.5 bg-white rounded-lg border border-slate-200 focus:ring-2 focus:ring-emerald-500 outline-none font-bold text-emerald-700">
@@ -621,7 +621,7 @@
           <div class="flex flex-wrap gap-2 pt-1" id="quickFacilitiesContainer">
             <button type="button" onclick="toggleFacilityTag('সিলিন্ডার গ্যাস', this)" class="facility-chip px-3 py-1.5 rounded-lg text-xs font-medium border border-slate-200 bg-white text-slate-700 hover:border-emerald-500 transition">🔥 সিলিন্ডার গ্যাস</button>
             <button type="button" onclick="toggleFacilityTag('লাইনের গ্যাস', this)" class="facility-chip px-3 py-1.5 rounded-lg text-xs font-medium border border-slate-200 bg-white text-slate-700 hover:border-emerald-500 transition">⛽ লাইনের গ্যাস</button>
-            <button type="button" onclick="toggleFacilityTag('ওয়াইফাই সুবিধা', this)" class="facility-chip px-3 py-1.5 rounded-lg text-xs font-medium border border-slate-200 bg-white text-slate-700 hover:border-emerald-500 transition">📶 ওয়াইফাই</button>
+            <button type="button" onclick="toggleFacilityTag('ওয়াইফাই সুবিধা', this)" class="facility-chip px-3 py-1.5 rounded-lg text-xs font-medium border border-slate-200 bg-white text-slate-700 hover:border-emerald-500 transition">📶 ওয়াইফাই</button>
             <button type="button" onclick="toggleFacilityTag('সার্বক্ষণিক পানি', this)" class="facility-chip px-3 py-1.5 rounded-lg text-xs font-medium border border-slate-200 bg-white text-slate-700 hover:border-emerald-500 transition">💧 ২৪ ঘণ্টা পানি</button>
             <button type="button" onclick="toggleFacilityTag('বাইক পার্কিং', this)" class="facility-chip px-3 py-1.5 rounded-lg text-xs font-medium border border-slate-200 bg-white text-slate-700 hover:border-emerald-500 transition">🛵 বাইক পার্কিং</button>
             <button type="button" onclick="toggleFacilityTag('লিফট সুবিধা', this)" class="facility-chip px-3 py-1.5 rounded-lg text-xs font-medium border border-slate-200 bg-white text-slate-700 hover:border-emerald-500 transition">🛗 লিফট</button>
@@ -631,7 +631,7 @@
           <textarea id="formDesc" rows="2" placeholder="অন্যান্য বিবরণ বা শর্তাবলী লিখুন..." class="w-full mt-2 p-2.5 bg-white rounded-lg border border-slate-200 focus:ring-2 focus:ring-emerald-500 outline-none text-xs"></textarea>
         </div>
 
-        <!-- Media Upload with 1 GB Limit & Progress Bar -->
+        <!-- Media Upload -->
         <div class="bg-slate-50 p-3.5 rounded-xl border border-slate-200 space-y-3">
           <div class="border-2 border-dashed border-emerald-300 bg-emerald-50/50 hover:bg-emerald-50 rounded-xl p-4 text-center cursor-pointer relative">
             <input type="file" id="formImageFiles" accept="image/*" multiple onchange="handleImagePreview(this)" class="absolute inset-0 w-full h-full opacity-0 cursor-pointer">
@@ -648,10 +648,8 @@
               </label>
               <span class="text-[11px] font-bold text-rose-600 bg-rose-50 px-2 py-0.5 rounded border border-rose-200">Max: 1 GB</span>
             </div>
-            <!-- Video Input with Max 1 GB Validation -->
             <input type="file" id="formVideoFile" accept="video/mp4,video/webm,video/quicktime,video/x-matroska" onchange="validateVideoFileSize(this)" class="w-full text-xs text-slate-500 file:mr-3 file:py-1.5 file:px-3 file:rounded-md file:border-0 file:text-xs file:font-semibold file:bg-rose-50 file:text-rose-700 hover:file:bg-rose-100 cursor-pointer mb-2">
             
-            <!-- Upload Progress Bar (Firebase Upload) -->
             <div id="videoUploadProgressWrapper" class="hidden mb-2">
               <div class="flex justify-between text-[11px] text-slate-600 mb-1">
                 <span>ভিডিও আপলোড হচ্ছে...</span>
@@ -687,10 +685,6 @@
 
   <!-- JavaScript Logic -->
   <script>
-    // ==========================================
-    // 1. FIREBASE CONFIGURATION (Database & Storage)
-    // Apnar Firebase console er credentials ekhane bosiye nite parben
-    // ==========================================
     const firebaseConfig = {
       apiKey: "AIzaSyCjy5f2UMDNIk3NXbLhZ2saRe2t7NTIWP4",
       authDomain: "toletgopalgonj.firebaseapp.com",
@@ -715,7 +709,7 @@
         console.log("Firebase initialized successfully!");
       }
     } catch (err) {
-      console.warn("Firebase not initialized with custom keys. Running in local mode.", err);
+      console.warn("Firebase initialization error:", err);
     }
 
     const EMAILJS_PUBLIC_KEY = "kKeUrs7wO9jJCFePf";
@@ -737,7 +731,7 @@
     const defaultListings = [
       {
         id: 1,
-        title: "শিক্ষার্থীদের জন্য ৩ সিটের বড় মেস রুম",
+        title: "শিক্ষার্থীদের জন্য ৩ সিটের বড় মেস রুম",
         type: "মেস সিট",
         area: "ঘোনাপাড়া (BSMRSTU এলাকা)",
         rent: 1800,
@@ -745,8 +739,8 @@
         phone: "01712345678",
         ownerPhone: "01712345678",
         postedBy: "আব্দুল করিম",
-        specs: "ফ্রি ওয়াইফাই, মিল সিস্টেম",
-        desc: "বিশ্ববিদ্যালয় গেটের কাছে নিরিবিলি পড়াশোনার পরিবেশ।",
+        specs: "ফ্রি ওয়াইফাই, মিল সিস্টেম",
+        desc: "বিশ্ববিদ্যালয় গেটের কাছে নিরিবিলি পড়াশোনার পরিবেশ।",
         images: ["https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=600&auto=format&fit=crop&q=80"],
         video: ""
       },
@@ -805,13 +799,11 @@
     let generatedOtp = null;
     let otpTargetEmail = null;
 
-    // Chat system state
     let chats = JSON.parse(localStorage.getItem('tolet_chats')) || [];
     let currentChatKey = null;
     let activeChatListing = null;
     let activeChatRecipientPhone = null;
 
-    // Audio recording state
     let mediaRecorder = null;
     let audioChunks = [];
     let recordingTimerInterval = null;
@@ -822,28 +814,46 @@
     }
 
     // ==========================================
-    // 2. 1 GB VIDEO SIZE VALIDATOR
+    // Fetch Listings From Firebase Firestore
     // ==========================================
-    const MAX_VIDEO_SIZE_BYTES = 1024 * 1024 * 1024; // 1 GB in bytes
+    async function loadListingsFromFirebase() {
+      if (isFirebaseReady && firebaseDb) {
+        try {
+          const snapshot = await firebaseDb.collection("listings").get();
+          if (!snapshot.empty) {
+            const fetched = [];
+            snapshot.forEach(doc => {
+              fetched.push(doc.data());
+            });
+            // Merge or update local listings
+            listings = fetched;
+            localStorage.setItem('gopalganj_tolet', JSON.stringify(listings));
+            applyFilters();
+          }
+        } catch (err) {
+          console.warn("Could not fetch listings from Firestore:", err);
+        }
+      }
+    }
+
+    const MAX_VIDEO_SIZE_BYTES = 1024 * 1024 * 1024; // 1 GB
 
     function validateVideoFileSize(input) {
       if (input.files && input.files[0]) {
         const file = input.files[0];
         if (file.size > MAX_VIDEO_SIZE_BYTES) {
           const fileSizeGB = (file.size / (1024 * 1024 * 1024)).toFixed(2);
-          alert(`ভিডিও ফাইলের সাইজ ১ GB এর বেশি হতে পারবে না!\nআপনার ফাইলের সাইজ: ${fileSizeGB} GB। দয়া করে ছোট ভিডিও নির্বাচন করুন।`);
-          input.value = ''; // clear input immediately
+          alert(`ভিডিও ফাইলের সাইজ ১ GB এর বেশি হতে পারবে না!\nআপনার ফাইলের সাইজ: ${fileSizeGB} GB। দয়া করে ছোট ভিডিও নির্বাচন করুন।`);
+          input.value = '';
           return false;
         }
       }
       return true;
     }
 
-    // Upload Video to Firebase Storage with Real-Time Progress
     function uploadVideoToFirebase(file) {
       return new Promise((resolve, reject) => {
         if (!isFirebaseReady || !firebaseStorage) {
-          // If Firebase is not configured, fallback to object URL/Base64
           const objectUrl = URL.createObjectURL(file);
           resolve(objectUrl);
           return;
@@ -1000,7 +1010,7 @@
     function toggleAdminModal(show) { document.getElementById('adminPanelModal').classList.toggle('hidden', !show); }
     function toggleAdminEditUserModal(show) { document.getElementById('adminEditUserModal').classList.toggle('hidden', !show); }
     function toggleForgotPasswordModal(show) { 
-      document.getElementById('forgotPasswordModal').classList.toggle('hidden', !show);
+      document.getElementById('forgotPasswordModal').classList.toggle('hidden', !show); 
       if (!show) {
         document.getElementById('otpStep1').classList.remove('hidden');
         document.getElementById('otpStep2').classList.add('hidden');
@@ -1110,11 +1120,11 @@
       const password = document.getElementById('regPassword').value;
 
       if (users.find(u => u.phone === phone)) {
-        alert("এই মোবাইল নম্বর দিয়ে ইতিমধ্যে অ্যাকাউন্ট রয়েছে!");
+        alert("এই মোবাইল নম্বর দিয়ে ইতিমধ্যে অ্যাকাউন্ট রয়েছে!");
         return;
       }
       if (users.find(u => u.email === email)) {
-        alert("এই ইমেইল দিয়ে ইতিমধ্যে অ্যাকাউন্ট রয়েছে!");
+        alert("এই ইমেইল দিয়ে ইতিমধ্যে অ্যাকাউন্ট রয়েছে!");
         return;
       }
 
@@ -1126,7 +1136,7 @@
       localStorage.setItem('tolet_current_user', JSON.stringify(currentUser));
       toggleAuthModal(false);
       updateAuthUI();
-      alert("অ্যাকাউন্ট সফলভাবে তৈরি হয়েছে!");
+      alert("অ্যাকাউন্ট সফলভাবে তৈরি হয়েছে!");
     }
 
     function logout() {
@@ -1150,7 +1160,7 @@
       const user = users.find(u => u.email === email);
 
       if (!user) {
-        alert("এই ইমেইল দিয়ে কোনো অ্যাকাউন্ট পাওয়া যায়নি!");
+        alert("এই ইমেইল দিয়ে কোনো অ্যাকাউন্ট পাওয়া যায়নি!");
         return;
       }
 
@@ -1201,7 +1211,7 @@
         return;
       }
       if (!newPassword || newPassword.length < 3) {
-        alert("কমপক্ষে ৩ অক্ষরের পাসওয়ার্ড দিন।");
+        alert("কমপক্ষে ৩ অক্ষরের পাসওয়ার্ড দিন।");
         return;
       }
 
@@ -1209,15 +1219,12 @@
       if (userIndex !== -1) {
         users[userIndex].password = newPassword;
         localStorage.setItem('tolet_users', JSON.stringify(users));
-        alert("পাসওয়ার্ড সফলভাবে পরিবর্তিত হয়েছে! এখন লগইন করুন।");
+        alert("পাসওয়ার্ড সফলভাবে পরিবর্তিত হয়েছে! এখন লগইন করুন।");
         toggleForgotPasswordModal(false);
         toggleAuthModal(true);
       }
     }
 
-    // ==========================================
-    // CHAT SYSTEM (SMS + BEAUTIFUL VOICE SMS)
-    // ==========================================
     function getChatRoomKey(listingId, userA, userB) {
       const sorted = [userA, userB].sort();
       return `chat_${listingId}_${sorted[0]}_${sorted[1]}`;
@@ -1234,7 +1241,7 @@
       if (!item) return;
 
       if (currentUser.phone === item.ownerPhone) {
-        alert("এটি আপনার নিজের বিজ্ঞাপন! ভাড়াটিয়াদের মেসেজ দেখতে ইনবক্স চেক করুন।");
+        alert("এটি আপনার নিজের বিজ্ঞাপন! ভাড়াটিয়াদের মেসেজ দেখতে ইনবক্স চেক করুন।");
         openInboxModal();
         return;
       }
@@ -1243,7 +1250,7 @@
       activeChatRecipientPhone = item.ownerPhone;
       currentChatKey = getChatRoomKey(item.id, currentUser.phone, item.ownerPhone);
 
-      document.getElementById('chatPartnerName').textContent = item.postedBy || 'বাড়িওয়ালা';
+      document.getElementById('chatPartnerName').textContent = item.postedBy || 'বাড়িওয়ালা';
       document.getElementById('chatListingTitle').textContent = item.title;
 
       renderChatMessages();
@@ -1274,8 +1281,8 @@
         container.innerHTML = `
           <div class="text-center py-10">
             <i class="fa-regular fa-comment-dots text-3xl text-slate-300 mb-2 block"></i>
-            <p class="text-xs text-slate-500 font-medium">এখনো কোনো মেসেজ আদান-প্রদান হয়নি।</p>
-            <span class="text-[11px] text-slate-400">নিচে লিখে বা ভয়েস পাঠিয়ে কথা শুরু করুন।</span>
+            <p class="text-xs text-slate-500 font-medium">এখনো কোনো মেসেজ আদান-প্রদান হয়নি।</p>
+            <span class="text-[11px] text-slate-400">নিচে লিখে বা ভয়েস পাঠিয়ে কথা শুরু করুন।</span>
           </div>
         `;
         return;
@@ -1420,7 +1427,7 @@
         }, 1000);
 
       } catch (err) {
-        alert("মাইক্রোফোন চালু করার অনুমতি দেওয়া হয়নি বা পাওয়া যায়নি!");
+        alert("মাইক্রোফোন চালু করার অনুমতি দেওয়া হয়নি বা পাওয়া যায়নি!");
         console.error("Microphone error:", err);
       }
     }
@@ -1508,7 +1515,7 @@
         container.innerHTML = `
           <div class="text-center py-10">
             <i class="fa-solid fa-envelope-open-text text-3xl text-slate-300 mb-2 block"></i>
-            <p class="text-xs text-slate-500">আপনার কোনো সক্রিয় চ্যাট বা মেসেজ নেই।</p>
+            <p class="text-xs text-slate-500">আপনার কোনো সক্রিয় চ্যাট বা মেসেজ নেই।</p>
           </div>
         `;
       } else {
@@ -1540,9 +1547,6 @@
       toggleInboxModal(true);
     }
 
-    // ==========================================
-    // ADMIN PANEL & USER CONTROLS
-    // ==========================================
     function openAdminModal() {
       if (!isAdmin()) {
         alert("অননুমোদিত অ্যাক্সেস!");
@@ -1641,7 +1645,7 @@
         localStorage.setItem('tolet_users', JSON.stringify(users));
         renderAdminUsersTable();
         toggleAdminEditUserModal(false);
-        alert("ইউজারের তথ্য ও পাসওয়ার্ড সফলভাবে আপডেট করা হয়েছে!");
+        alert("ইউজারের তথ্য ও পাসওয়ার্ড সফলভাবে আপডেট করা হয়েছে!");
       }
     }
 
@@ -1690,11 +1694,11 @@
       const input = document.getElementById('newLocationInput');
       const val = input.value.trim();
       if (!val) {
-        alert("দয়া করে এলাকার নাম লিখুন!");
+        alert("দয়া করে এলাকার নাম লিখুন!");
         return;
       }
       if (locations.includes(val)) {
-        alert("এই এলাকা ইতিমধ্যে তালিকায় রয়েছে!");
+        alert("এই এলাকা ইতিমধ্যে তালিকায় রয়েছে!");
         return;
       }
 
@@ -1821,7 +1825,7 @@
       reader.onerror = error => reject(error);
     });
 
-    // Handle Form Submit with Firebase / 1 GB limit
+    // Handle Form Submit with Firebase integration
     async function handleFormSubmit(e) {
       e.preventDefault();
       const submitBtn = document.getElementById('submitBtn');
@@ -1861,11 +1865,10 @@
         }
 
         try {
-          // Upload to Firebase Storage or generate object URL
           videoUrl = await uploadVideoToFirebase(videoFile);
         } catch (err) {
           console.error("Video Upload Failed:", err);
-          alert("ভিডিও আপলোড সম্পন্ন করা যায়নি, দয়া করে আবার চেষ্টা করুন।");
+          alert("ভিডিও আপলোড সম্পন্ন করা যায়নি, দয়া করে আবার চেষ্টা করুন।");
           submitBtn.disabled = false;
           submitBtn.innerHTML = `<i class="fa-solid fa-cloud-arrow-up text-sm"></i> <span>বিজ্ঞাপন সংরক্ষণ করুন</span>`;
           return;
@@ -1873,6 +1876,9 @@
       } else if (!videoUrl && existingListing) {
         videoUrl = existingListing.video || "";
       }
+
+      let targetListingData = null;
+      let targetDocId = null;
 
       if (editId) {
         const index = listings.findIndex(l => l.id == editId);
@@ -1882,7 +1888,7 @@
             title: document.getElementById('formTitle').value,
             type: document.getElementById('formType').value,
             area: document.getElementById('formArea').value,
-            rent: document.getElementById('formRent').value,
+            rent: Number(document.getElementById('formRent').value),
             available: document.getElementById('formAvailable').value,
             phone: document.getElementById('formPhone').value,
             specs: document.getElementById('formSpecs').value,
@@ -1890,6 +1896,8 @@
             images: images,
             video: videoUrl
           };
+          targetListingData = listings[index];
+          targetDocId = String(editId);
         }
       } else {
         const newListing = {
@@ -1897,7 +1905,7 @@
           title: document.getElementById('formTitle').value,
           type: document.getElementById('formType').value,
           area: document.getElementById('formArea').value,
-          rent: document.getElementById('formRent').value,
+          rent: Number(document.getElementById('formRent').value),
           available: document.getElementById('formAvailable').value,
           phone: document.getElementById('formPhone').value,
           specs: document.getElementById('formSpecs').value,
@@ -1908,15 +1916,17 @@
           ownerPhone: currentUser.phone
         };
         listings.unshift(newListing);
+        targetListingData = newListing;
+        targetDocId = String(newListing.id);
       }
 
-      // Save to Firebase Firestore if connected
-      if (isFirebaseReady && firebaseDb) {
+      // Save to Firebase Firestore
+      if (isFirebaseReady && firebaseDb && targetListingData) {
         try {
-          const docId = editId ? String(editId) : String(Date.now());
-          firebaseDb.collection("listings").doc(docId).set(listings[0]);
+          await firebaseDb.collection("listings").doc(targetDocId).set(targetListingData);
+          console.log("Firestore-এ সফলভাবে সংরক্ষিত হয়েছে!");
         } catch (fErr) {
-          console.warn("Firestore save fallback to local:", fErr);
+          console.warn("Firestore save error:", fErr);
         }
       }
 
@@ -2018,9 +2028,18 @@
       toggleAdModal(true);
     }
 
-    function removeListing(id) {
+    async function removeListing(id) {
       if (!confirm("আপনি কি নিশ্চিত এই বিজ্ঞাপনটি মুছে ফেলতে চান?")) return;
       listings = listings.filter(item => item.id !== id);
+      
+      if (isFirebaseReady && firebaseDb) {
+        try {
+          await firebaseDb.collection("listings").doc(String(id)).delete();
+        } catch (err) {
+          console.warn("Error deleting from Firestore:", err);
+        }
+      }
+
       localStorage.setItem('gopalganj_tolet', JSON.stringify(listings));
       openUserDashboard();
       applyFilters();
@@ -2148,7 +2167,7 @@
 
           <div class="px-5 py-3.5 bg-slate-50 border-t border-slate-100 flex items-center justify-between">
             <div>
-              <span class="text-[10px] text-slate-400 uppercase tracking-wider block font-bold">ভাড়া</span>
+              <span class="text-[10px] text-slate-400 uppercase tracking-wider block font-bold">ভাড়া</span>
               <span class="text-base font-extrabold text-emerald-600">৳${Number(item.rent).toLocaleString('bn-BD')}</span>
               <span class="text-[11px] text-slate-500">/মাস</span>
             </div>
@@ -2194,10 +2213,11 @@
       renderListings(listings);
     }
 
-    // Initialize App
+    // Initialize App & Sync Data
     refreshLocationDropdowns();
     updateAuthUI();
     renderListings(listings);
+    loadListingsFromFirebase();
   </script>
 </body>
 </html>
